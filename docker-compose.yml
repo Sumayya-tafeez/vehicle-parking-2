@@ -1,0 +1,20 @@
+version: '3'
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=parkingdb.cvwq8w8qebjk.eu-north-1.rds.amazonaws.com
+      - DB_USER=postgres
+      - DB_PASS=Sumayya058
+      - DB_NAME=parkingdb
+    restart: always
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
